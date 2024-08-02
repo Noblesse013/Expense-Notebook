@@ -1,6 +1,6 @@
-'use client';
+'use client'
 import React, { useState, useEffect } from "react";
-import { collection, addDoc, query, onSnapshot, deleteDoc, doc } from "firebase/firestore";
+import { collection, addDoc, query, onSnapshot, deleteDoc, doc,} from "firebase/firestore"; 
 import { db } from "./firebase";
 
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
       });
       setNewItem({ name: '', price: '' });
     }
-  };
+  }
 
   // Read items from database
   useEffect(() => {
@@ -43,58 +43,55 @@ export default function Home() {
 
     calculateTotal();
   }, [items]);
-
   // Delete items from database
   const deleteItems = async (id) => {
     await deleteDoc(doc(db, 'items', id));
-  };
+  } 
+
 
   return (
-    <main className="bg-sky-100 flex min-h-screen flex-col items-center justify-between p-4 font-sans">
-      <div className="z-10 max-w-5xl w-full items-center justify-between text-sm">
-        <h1 className="text-4xl p-4 text-center text-sky-900">Pocket Wallet Tracker</h1>
-        <div className="bg-white shadow-lg p-4 rounded-lg">
-          <form className="grid grid-cols-6 gap-2 items-center">
+    <main className="bg-black flex min-h-screen flex-col items-center justify-between sm:p-24 p-4">
+      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm ">
+        <h1 className="text-4xl p-4 text-center text-white"> Pocket Wallet Track</h1>
+        <div className="bg-slate-800 p-4 rounded-lg">
+          <form className="grid grid-cols-6 items-center text-black">
             <input
               value={newItem.name}
               onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
-              className="col-span-3 p-3 border border-gray-300 rounded text-blue-800 bg-white"
+              className="col-span-3 p-3 border"
               type="text"
-              placeholder="Item Name"
+              placeholder="Enter"
             />
-            <input
+            <input 
               value={newItem.price}
               onChange={(e) => setNewItem({ ...newItem, price: e.target.value })}
-              className="col-span-2 p-3 border border-gray-300 rounded text-blue-800 bg-white"
+              className="col-span-2 p-3 border mx-3"
               type="number"
-              placeholder="Price $"
+              placeholder="Enter Tk"
             />
-            <button
+            <button 
               onClick={addItem}
-              className="bg-sky-500 hover:bg-sky-600 text-white p-3 rounded col-span-1"
+              className="text-white bg-slate-950 hover:bg-slate-900 p-3 text-xl"
               type="submit"
             >
               Add
             </button>
           </form>
-          <ul className="mt-4">
+          <ul>
             {items.map((item) => (
-              <li key={item.id} className="my-2 p-4 bg-white shadow-md rounded flex justify-between items-center">
-                <span className="capitalize">{item.name}</span>
-                <span>${item.price}</span>
-                <button
-                  onClick={() => deleteItems(item.id)}
-                  className="ml-4 p-2 bg-red-500 text-white rounded hover:bg-red-600"
-                >
-                  X
-                </button>
+              <li key={item.id} className="my-4 w-full flex justify-between bg-slate-950">
+                <div className="p-4 w-full flex justify-between">
+                  <span className="capitalize">{item.name}</span>
+                  <span>Tk{item.price}</span>
+                </div>
+                <button onClick={() => deleteItems(item.id)} className="ml-8 p-4 border-l-2 border-slate-900 hover:bg-slate-900 w-16">X</button>
               </li>
             ))}
           </ul>
-          {items.length > 0 && (
-            <div className="flex justify-between p-3 mt-4 bg-white shadow-lg rounded">
-              <span className="font-bold">Total</span>
-              <span className="font-bold">${total.toFixed(2)}</span> {/* Display total with two decimal places */}
+          {items.length < 1 ? '' : (
+            <div className="flex justify-between p-3">
+              <span>Total</span>
+              <span>${total.toFixed(2)}</span> {/* Display total with two decimal places */}
             </div>
           )}
         </div>
