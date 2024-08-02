@@ -52,7 +52,7 @@ export default function Home() {
   return (
     <main className="bg-black flex min-h-screen flex-col items-center justify-between sm:p-24 p-4">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm ">
-        <h1 className="text-4xl p-4 text-center text-white">Expense Tracker</h1>
+        <h1 className="text-4xl p-4 text-center text-white"> Pocket Wallet Track</h1>
         <div className="bg-slate-800 p-4 rounded-lg">
           <form className="grid grid-cols-6 items-center text-black">
             <input
@@ -60,7 +60,7 @@ export default function Home() {
               onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
               className="col-span-3 p-3 border"
               type="text"
-              placeholder="Enter Items"
+              placeholder="Enter"
             />
             <input 
               value={newItem.price}
