@@ -82,7 +82,7 @@ export default function Home() {
               <li key={item.id} className="my-4 w-full flex justify-between bg-slate-950">
                 <div className="p-4 w-full flex justify-between">
                   <span className="capitalize">{item.name}</span>
-                  <span>Tk{item.price}</span>
+                  <span>{item.price} Tk</span>
                 </div>
                 <button onClick={() => deleteItems(item.id)} className="ml-8 p-4 border-l-2 border-slate-900 hover:bg-slate-900 w-16">X</button>
               </li>
