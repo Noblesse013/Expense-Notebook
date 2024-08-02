@@ -71,7 +71,7 @@ export default function Home() {
             />
             <button
               onClick={addItem}
-              className="text-white bg-magenta-600 hover:bg-magenta-700 p-3 text-xl rounded"
+              className="text-black bg-white hover:bg-gray-100 p-3 text-xl rounded border border-black"
               type="submit"
             >
               Add
