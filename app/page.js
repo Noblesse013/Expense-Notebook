@@ -58,16 +58,16 @@ export default function Home() {
             <input
               value={newItem.name}
               onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
-              className="col-span-3 p-3 border border-gray-300 rounded"
+              className="col-span-3 p-3 border border-gray-300 rounded text-blue-800 bg-white"
               type="text"
               placeholder="Item Name"
             />
             <input
               value={newItem.price}
               onChange={(e) => setNewItem({ ...newItem, price: e.target.value })}
-              className="col-span-2 p-3 border border-gray-300 rounded"
+              className="col-span-2 p-3 border border-gray-300 rounded text-blue-800 bg-white"
               type="number"
-              placeholder="Price Taka"
+              placeholder="Price $"
             />
             <button
               onClick={addItem}
@@ -81,7 +81,7 @@ export default function Home() {
             {items.map((item) => (
               <li key={item.id} className="my-2 p-4 bg-white shadow-md rounded flex justify-between items-center">
                 <span className="capitalize">{item.name}</span>
-                <span>Taka{item.price}</span>
+                <span>${item.price}</span>
                 <button
                   onClick={() => deleteItems(item.id)}
                   className="ml-4 p-2 bg-red-500 text-white rounded hover:bg-red-600"
